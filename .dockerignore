@@ -1,0 +1,12 @@
+.git
+.cache
+.tmp
+.editorconfig
+.env
+.eslintignore
+.eslintrc
+.gitignore
+Dockerfile
+README.md
+build
+node_modules
