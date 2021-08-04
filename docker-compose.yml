@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  strapi:
+    image: josaorg/start-api:0.1.2-dev
+    container_name: start-api
+    restart: unless-stopped
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_SSL: ${DATABASE_SSL}
+    networks:
+      - strapi-app-network
+    volumes:
+      - .:/srv/app
+    ports:
+      - "1337:1337"
+
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - strapi-app-network
+    volumes:
+      - dbdata:/data/db
+    ports:
+      - "5432:5432"
+
+networks:
+  strapi-app-network:
+    driver: bridge
+
+volumes:
+  strapidata:
