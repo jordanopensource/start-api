@@ -14,4 +14,6 @@ RUN npm run build
 
 EXPOSE 1337
 
-CMD ["npm", "start"]
+RUN chmod a+x /srv/app/run.sh
+
+CMD ["/srv/app/run.sh"]
