@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_section_sections",
+  "info": {
+    "name": "Section",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "SectionTitle": {
+      "type": "string"
+    },
+    "SectionBody": {
+      "type": "richtext"
+    }
+  }
+}
