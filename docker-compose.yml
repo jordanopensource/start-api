@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  strapi:
+    image: josaorg/start-api:latest
+    container_name: start-api
+    restart: always
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_SSL: ${DATABASE_SSL}
+    volumes:
+      - .:/srv/app:rw
+    ports:
+      - "1337:1337"
+
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - ./dbdata:/data/db
+    ports:
+      - "5432:5432"
