@@ -69,5 +69,5 @@
   "PopUpForm.Providers.authorize_url.label": "Authorization URL",
   "PopUpForm.Providers.oauth.label": "OAuth version",
   "PopUpForm.Providers.access_url.label": "Acccess URL",
-  "PopUpForm.Providers.josa.providerConfig.redirectURL": "The redirect URL to add in your JOSA application configurations"
+  "PopUpForm.Providers.keycloak.providerConfig.redirectURL": "The redirect URL to add in your Keycloak application configurations"
 }

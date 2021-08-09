@@ -139,17 +139,16 @@ module.exports = async () => {
       scope: ['openid email'], // scopes should be space delimited
       subdomain: 'my.subdomain.com/cas',
     },
-    josa: {
+    keycloak: {
       enabled: false,
       icon: 'key',
       key: '',
       secret: '',
       oauth: 2,
-      callback: `${strapi.config.server.url}/auth/josa/callback`,
-      scope: ['email'],
-      subdomain: 'my.provider.josa/auth/realms/example',
-      authorize_url: 'https://[subdomain]/protocol/openid-connect/auth',
-      access_url: 'https://[subdomain]/protocol/openid-connect/token'
+      authorize_url: 'https://id.jordanopensource.org/auth/realms/JOSA/protocol/openid-connect/auth',
+      access_url: 'https://id.jordanopensource.org/auth/realms/JOSA/protocol/openid-connect/token',
+      callback: `${strapi.config.server.url}/auth/keycloak/callback`,
+      scope: ['openid', 'email', 'profile'],
     },
   };
   const prevGrantConfig = (await pluginStore.get({ key: 'grant' })) || {};

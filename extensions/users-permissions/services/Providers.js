@@ -581,13 +581,12 @@ const getProfile = async (provider, query, callback) => {
         });
       break;
     }
-    case 'josa': {
-      const provider_url = 'https://' + _.get(grant['josa'], 'subdomain');
-      const josa = purest({
-        provider: 'josa',
+    case 'keycloak': {
+      const keycloak = purest({
+        provider: 'keycloak',
         config: {
-          josa: {
-            [provider_url]: {
+          keycloak: {
+            'https://id.jordanopensource.org/auth/realms/JOSA': {
               __domain: {
                 auth: {
                   auth: { bearer : '[0]'},
@@ -602,7 +601,7 @@ const getProfile = async (provider, query, callback) => {
           }
         }
       });
-      josa.query().get('protocol/openid-connect/userinfo').auth(access_token).request((err, res, body) => {
+      keycloak.query().get('protocol/openid-connect/userinfo').auth(access_token).request((err, res, body) => {
         if (err) {
           callback(err);
         } else {
